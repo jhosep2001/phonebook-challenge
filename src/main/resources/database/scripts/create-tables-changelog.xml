@@ -1,0 +1,38 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="createTables" author="admin">
+        <createTable tableName="contacts">
+            <column name="id" type="integer" autoIncrement="true" >
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="phone" type="VARCHAR(15)" >
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <insert tableName="contacts">
+            <column name="first_name" value="Arun"/>
+            <column name="last_name" value="Kart"/>
+            <column name="phone" value="415-8679089"/>
+        </insert>
+        <insert tableName="contacts">
+            <column name="first_name" value="Nolux"/>
+            <column name="last_name" value="Fernandez"/>
+            <column name="phone" value="310-2930291"/>
+        </insert>
+        <insert tableName="contacts">
+            <column name="first_name" value="Juan"/>
+            <column name="last_name" value="Torus"/>
+            <column name="phone" value="301-2390930"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
