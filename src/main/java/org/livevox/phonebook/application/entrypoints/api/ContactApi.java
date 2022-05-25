@@ -44,6 +44,14 @@ public class ContactApi {
         return serviceMapper.convertToResponse(contactService.findById(idContact));
     }
 
+    @GetMapping("/contact/search")
+    public List<ContactResponse> contacts(@RequestParam("text") String searchText) {
+        log.info("Attending search contact request");
+        return contactService.findByText(searchText)
+                .stream().map(serviceMapper::convertToResponse)
+                .collect(Collectors.toList());
+    }
+
     @PostMapping("/contact")
     @ResponseStatus(HttpStatus.CREATED)
     public ContactResponse createContact(@RequestBody @Valid ContactRequest contactRequest) {

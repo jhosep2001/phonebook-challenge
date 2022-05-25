@@ -58,12 +58,4 @@ public class ContactsController {
         return "redirect:/";
     }
 
-    @GetMapping("/contact/search")
-    @ResponseBody
-    public List<ContactResponse> contacts(@RequestParam("text") String searchText) {
-        log.info("Attending search contact request");
-        return contactService.findByText(searchText)
-                .stream().map(serviceMapper::convertToResponse)
-                .collect(Collectors.toList());
-    }
 }

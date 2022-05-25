@@ -4,7 +4,7 @@ const searchContacts = () => {
     const table = document.getElementById("search-results");
     table.classList.remove("display");
 
-    fetch("http://localhost:8080/contact/search?text="+text, {
+    fetch("http://localhost:8080/api/contact/search?text="+text, {
         method: 'GET',
     })
         .then(response => response.json())
