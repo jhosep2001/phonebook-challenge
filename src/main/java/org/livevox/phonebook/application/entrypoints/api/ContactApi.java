@@ -31,7 +31,7 @@ public class ContactApi {
 
     @GetMapping("/contacts")
     @ResponseStatus(HttpStatus.OK)
-    private List<ContactResponse> getAllContacts() {
+    public List<ContactResponse> getAllContacts() {
         log.info("Starting Get all contacts request");
         return contactService.getAllContacts().stream().map(serviceMapper::convertToResponse)
                 .collect(Collectors.toList());
@@ -39,14 +39,14 @@ public class ContactApi {
 
     @GetMapping("/contact/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private ContactResponse getContactById(@PathVariable("id") Integer idContact) {
+    public ContactResponse getContactById(@PathVariable("id") Integer idContact) {
         log.info("Starting Get contact by id request");
         return serviceMapper.convertToResponse(contactService.findById(idContact));
     }
 
     @PostMapping("/contact")
     @ResponseStatus(HttpStatus.CREATED)
-    private ContactResponse createContact(@RequestBody @Valid ContactRequest contactRequest) {
+    public ContactResponse createContact(@RequestBody @Valid ContactRequest contactRequest) {
         log.info("Starting create contact request");
         return serviceMapper.convertToResponse(
                 contactService.createContact(
@@ -56,7 +56,7 @@ public class ContactApi {
 
     @PutMapping("/contact/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    private ContactResponse updateContact(@PathVariable("id") Integer idContact,
+    public ContactResponse updateContact(@PathVariable("id") Integer idContact,
                                           @RequestBody @Valid ContactRequest contactRequest) {
         log.info("Starting create contact request");
         ContactDomain entity = serviceMapper.convertFromRequest(contactRequest);
